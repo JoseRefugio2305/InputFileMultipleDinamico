@@ -171,7 +171,7 @@ function arraySwapIndex(firstIndex, secondIndex, list) {
 fileInputMulti.addEventListener("input", async () => {
     // Get files list from <input>
     var newFilesList = Array.from(fileInputMulti.files);
-    //console.log(newFilesList.length)
+    console.log(newFilesList)
     if(newFilesList.length>10)
     {
         //console.log(newFilesList.length)
@@ -184,6 +184,7 @@ fileInputMulti.addEventListener("input", async () => {
     }
     //Obtener solo tipos permitidos
     newFilesList,msgAlert= await getOnlyImages(newFilesList);
+    console.log(newFilesList)
     if(msgAlert!='')
     {
         Swal.fire(
@@ -194,10 +195,13 @@ fileInputMulti.addEventListener("input", async () => {
     }
     // Update list files
     filesList = await getUniqFiles(newFilesList, filesList);
+    console.log(newFilesList)
+    console.log(filesList)
     // Only DEMO. Redraw
     renderPreviews(filesList, multiSelectorUniqPreview, fileInputMulti);
     // Set data to input
     fileInputMulti.files = arrayFilesToFileList(filesList);
+    console.log(fileInputMulti.files)
 });
 
 // Drag and drop

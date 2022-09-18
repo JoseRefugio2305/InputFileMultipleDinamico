@@ -13,7 +13,7 @@
 
     
 
-    <div style="width: 100vw;height: 100vh;border:solid black;"  ondragover="dragOverHandler(event);">
+    <div style="width: 100vw;height: 80vh;border:solid black;"  ondragover="dragOverHandler(event);">
 
     </div>
     
@@ -27,12 +27,15 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <div style="border:solid black;" >
-                        <section id="multi-selector-uniq">
-                            <input id="files" type="file" accept="image/*" multiple>
-                            <ul id="preview" class="list-group"></ul>
-                        </section>
-                    </div>
+                    <form action="" id="formArchivos">
+                        <div style="border:solid black;" >
+                            <section id="multi-selector-uniq">
+                                <input id="files" type="file" accept="image/*" multiple>
+                                <ul id="preview" class="list-group"></ul>
+                            </section>
+                        </div>
+                    </form>
+                    
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -41,7 +44,7 @@
             </div>
         </div>
     </div>
-
+    
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/inputdinamico.js"></script>
@@ -127,6 +130,11 @@
                 ev.dataTransfer.clearData();
             }
         }
+        $('#exampleModal').on('hidden.bs.modal', function (event) {
+            document.getElementById("formArchivos").reset()
+            filesList = []
+            document.getElementById("preview").innerHTML=''
+        })
     </script>
 </body>
 </html>
