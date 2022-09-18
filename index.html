@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input File Multiple Dinamico</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    
+
+    <div style="width: 100vw;height: 100vh;border:solid black;"  ondragover="dragOverHandler(event);">
+
+    </div>
+    
+    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sube tus archivos aqui</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div style="border:solid black;" >
+                        <section id="multi-selector-uniq">
+                            <input id="files" type="file" accept="image/*" multiple>
+                            <ul id="preview" class="list-group"></ul>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/inputdinamico.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script>
+        // document.getElementById("areadrop").addEventListener("drop", async ()=>{
+        //     console.log('Fichero(s) arrastrados');
+            
+        //     // Evitar el comportamiendo por defecto (Evitar que el fichero se abra/ejecute)
+        //     event.preventDefault();
+
+        //     if (event.dataTransfer.items) 
+        //     {
+        //         //Usar la interfaz DataTransferItemList para acceder a el/los archivos)
+        //         const archivos=[]
+        //         const arch=Array.from(event.dataTransfer.items)
+        //         arch.forEach(element => {
+        //             archivos.push(element.getAsFile())
+        //         });
+        //         const newFilesList = Array.from(fileInputMulti.files);
+        //         // Update list files
+        //         filesList = await getUniqFiles(archivos, filesList);
+        //         // Only DEMO. Redraw
+        //         renderPreviews(filesList, multiSelectorUniqPreview, fileInputMulti);
+        //         // Set data to input
+        //         fileInputMulti.files = arrayFilesToFileList(filesList);
+        //         for (var i = 0; i < event.dataTransfer.items.length; i++) 
+        //         {
+        //         // Si los elementos arrastrados no son ficheros, rechazarlos
+        //             if (event.dataTransfer.items[i].kind === 'file') 
+        //             {
+        //                 var file = event.dataTransfer.items[i].getAsFile();
+        //                 console.log('...es un fichero file[' + i + '].name = ' + file.name);
+        //             }   
+        //         }
+        //         for (var i = 0; i < archivos.length; i++) 
+        //         {
+        //         // Si los elementos arrastrados no son ficheros, rechazarlos
+        //             if (archivos[i].kind === 'file') 
+        //             {
+        //                 var file = archivos[i].getAsFile();
+        //                 console.log('...es un fichero file[' + i + '].name = ' + file.name);
+        //             }   
+        //         }
+        //     } 
+        //     else
+        //     {
+        //         // Usar la interfaz DataTransfer para acceder a el/los archivos
+        //         for (var i = 0; i < event.dataTransfer.files.length; i++) 
+        //         {
+        //             console.log('... file[' + i + '].name = ' + event.dataTransfer.files[i].name);
+        //         }
+        //     }
+
+        //     // Pasar el evento a removeDragData para limpiar
+        //     //removeDragData(event)
+        // })
+        function dropHandler(event)
+        {
+            
+        }
+
+        function dragOverHandler(event)
+        {
+            console.log('File(s) in drop zone');
+
+            // Prevent default behavior (Prevent file from being opened)
+            event.preventDefault();
+            $('#exampleModal').modal('show')
+        }
+
+        function removeDragData(ev) 
+        {
+            console.log('Removing drag data')
+
+            if (ev.dataTransfer.items) 
+            {
+                // Use DataTransferItemList interface to remove the drag data
+                ev.dataTransfer.items.clear();
+            } else {
+                // Use DataTransfer interface to remove the drag data
+                ev.dataTransfer.clearData();
+            }
+        }
+    </script>
+</body>
+</html>
