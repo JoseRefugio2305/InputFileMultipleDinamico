@@ -106,6 +106,7 @@ function renderPreviews(currentFileList, target, inputFile) {
         myLi.addEventListener("dragover", eventDragOver);
         const myButtonRemove = document.createElement("button");
         myButtonRemove.innerHTML = "<i class='fas fa-trash'></i>";
+        myButtonRemove.style.float="right"
         myButtonRemove.className = "btn btn-danger";
         myButtonRemove.addEventListener("click", () => {
             filesList = deleteArrayElementByIndex(currentFileList, index);
@@ -195,6 +196,7 @@ fileInputMulti.addEventListener("input", async () => {
     }
     // Update list files
     filesList = await getUniqFiles(newFilesList, filesList);
+    filesList = filesList.splice(0, 10)
     console.log(newFilesList)
     console.log(filesList)
     // Only DEMO. Redraw
